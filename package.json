@@ -1,0 +1,35 @@
+{
+  "name": "use-svg-icon",
+  "version": "1.0.0",
+  "description": "use svg icon !",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.8.2",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-data": "^1.2.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-svgfallback": "^3.0.2",
+    "gulp-svgo": "^0.1.1",
+    "reveal.js": "^3.1.0",
+    "gulp-svgstore": "^5.0.4",
+    "run-sequence": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rplus/use-svg-icon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rplus/use-svg-icon/issues"
+  },
+  "homepage": "https://github.com/Rplus/use-svg-icon#readme"
+}
