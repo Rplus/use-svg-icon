@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>svg</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="svg icons">
+        <meta name="author" content="Rplus, Rplus.tw@gmail.com">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <h1>SVG icon</h1>
+                </section>
+
+                <section>
+                    <h1>Why ?</h1>
+                    <aside class="notes">
+                        在既有 icon system 下為何還需要 svg icon 呢？
+                    </aside>
+                </section>
+
+                <section style="height: 100%; text-align: left;" data-background="img/minion2.png" data-background-size="contain" data-background-position="100% 0%">
+                    <div class="fragment">
+                        <h2 style="width: 90%;">眼睛很挑</h2>
+                        <h3 style="margin-top: 3em;">Pixel-Art Poopaya!</h3>
+                    </div>
+
+                    <aside class="notes">
+                        vector, 向量圖, 不要有鋸齒
+                    </aside>
+
+                    <cite style="position: absolute; bottom: 0; width: 50%;">
+                        image source:
+                        http://www.minecraftpixelarttemplates.com/2013/11/despicable-me-minion-2.html
+                    </cite>
+                </section>
+
+                <section>
+                    <h2>icon font 不是用的好好的？</h2>
+
+                    <h3 class="fragment" style="margin-top: 3em; opacity: .6">
+                        <span>難找、</span>
+                        <span>語義未明、</span>
+                        <span>不彈性</span>
+                        <br>
+                        <br>
+                        <span>只有單色、</span>
+                        <span>跨網域就心煩</span>
+                    </h3>
+                </section>
+
+                <section>
+                    <h1>What ?</h1>
+
+                    <aside class="notes">那麼 SVG 好在哪裡呢 ?</aside>
+
+                    <h2 class="fragment" style="opacity: .6">Is it good to drink ?</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>
+                            Inline SVG
+                            <br>
+                            <small style="display: inline-block; vertical-align: middle">v.s.</small>
+                            <br>
+                            Icon Fonts
+                        </h1>
+                    </section>
+
+                    <section>
+                        <h2>Inline SVG <small style="display: inline-block; vertical-align: middle">v.s.</small> Icon Fonts</h2>
+
+                        <div data-markdown style="font-size: 1.5em">
+                            <script type="text/template">
+                            1. vector
+                            1. css control
+                            1. position align
+                            1. no CORS
+                            1. semantics
+                            1. accessibility
+                            1. usability
+                            1. [ ! ] browser support
+                            </script>
+                        </div>
+
+                        <aside class="notes" data-markdown>
+                            <script type="text/template">
+                            1. vector: font 有些字級在 render 時會糊糊的
+                            1. css control: inline svg powerful stroke & filter
+                            1. position align: svg 不用去管那堆有的沒的 `line-height`, `vertical-align`, `display: inline-block`
+                            1. CORS
+                            1. semantics: `<svg>` is just a image
+                            1. accessibility: `<title>`, `<desc>`, `aria-labelledby`  
+                              ref: [svg readability and accessibility | svg4everybody](https://github.com/jonathantneal/svg4everybody#readability-and-accessibility)
+                            1. usability: pure text, 不開心就自己寫，就自己寫呀~
+                            1. browser support: IE8? Let it go~
+                            </script>
+                        </aside>
+
+                        <cite style="display: block; margin-top: 3em">
+                            source: <a href="https://css-tricks.com/icon-fonts-vs-svg/">https://css-tricks.com/icon-fonts-vs-svg/</a>
+                        </cite>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Browser support</h2>
+
+                        <ul style="font-size: 1.5em">
+                            <li>IE 9+</li>
+                            <li>IE 8-
+                                <div style="font-size: .6em">
+                                with <a href="https://github.com/jonathantneal/svg4everybody/blob/master/dist/svg4everybody.legacy.js">svg4everybody.legacy.js</a> + PNG
+                                </div>
+                            </li>
+                            <li>Android 3+</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>svg support detection</h2>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                                + [`Modernizr.svg`  
+                                `Modernizr.inlinesvg`](https://github.com/Modernizr/Modernizr/blob/v2.8.3/modernizr.js#L820-L844)
+                                + [Test for Support of SVG as img](https://css-tricks.com/test-support-svg-img/)
+                                + [`'undefined' !== typeof window.SVGRect`](http://stackoverflow.com/a/28239372/3893926)
+                            </script>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>SVG icon syntax</h1>
+                    </section>
+
+                    <section>
+                        <h2>SVG icon syntax - old</h2>
+
+                        <ol>
+                            <li>use <code>&lt;g&gt;</code> tag</li>
+                            <li>set <code>viewBox</code> in markup</li>
+                        </ol>
+
+                        <div data-markdown data-trim>
+                            <script type="text/template">
+                                ```
+                                <svg>
+                                  <defs>
+                                    <g id="shape-icon-1">
+                                      <!-- all the paths and shapes and whatnot for this icon -->
+                                    <g>
+                                    <g id="shape-icon-2">
+                                      <!-- all the paths and shapes and whatnot for this icon -->
+                                    <g>
+                                  </defs>
+                                </svg>
+
+                                <!-- in use -->
+                                <svg class="icon" viewBox="214.7 0 182.6 792">
+                                  <use xlink:href="#shape-icon-1" />
+                                </svg>
+                                ```
+                            </script>
+                        </div>
+
+                        <cite>
+                            source: <a href="https://css-tricks.com/svg-symbol-good-choice-icons/">https://css-tricks.com/svg-symbol-good-choice-icons/</a>
+                        </cite>
+                    </section>
+
+                    <section>
+                        <h2>SVG icon syntax - new</h2>
+
+                        <ol>
+                            <li>use <code>&lt;symbol&gt;</code> tag</li>
+                            <li>set <code>viewBox</code> in svg</li>
+                            <li>no extra <code>&lt;defs&gt;</code> tag</li>
+                        </ol>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                                ```
+                                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                  <symbol id="beaker" viewBox="214.7 0 182.6 792">
+                                    <!-- <path>s and whatever other shapes in here -->  
+                                  </symbol>
+
+                                  <symbol id="shape-icon-2" viewBox="0 26 100 48">
+                                    <!-- <path>s and whatever other shapes in here -->  
+                                  </symbol>
+                                </svg>
+
+                                <!-- in use -->
+                                <svg class="icon">
+                                  <use xlink:href="#shape-icon-1" />
+                                </svg>
+                                ```
+                            </script>
+                        </div>
+
+                        <cite>
+                            source: <a href="https://css-tricks.com/svg-symbol-good-choice-icons/">https://css-tricks.com/svg-symbol-good-choice-icons/</a>
+                        </cite>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Where ?</h1>
+                    </section>
+
+                    <section>
+                        <h2>1. in HTML</h2>
+
+                        e.g.,
+                        <pre><code data-trim>&lt;?php echo file_get_contents("kiwi.svg"); ?&gt;</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>2. Ajax</h2>
+
+                        <aside class="notes">
+                            基本上就是把 svg 撈回來塞進 body 裡，收工
+                        </aside>
+
+                        <ul>
+                            <li><a href="https://gist.github.com/w0rm/621a56a353f7b2a6b0db"><code>/gist/</code> Load combined svg file into body</a></li>
+                            <li><a href="https://github.com/jonathantneal/svg4everybody#svg-for-everybody"><code>/github/</code> svg4everybody</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>How ?</h1>
+                    </section>
+
+                    <section>
+                        <h2>1. <span style="position: relative; padding-right: 1em;">✋ <span style="position: absolute; transform: rotateY(180deg)">✋</span></span> + text-editor</h2>
+
+                        <h3 class="fragment" style="opacity: .6">hard to understand the SVG icon</h3>
+                    </section>
+
+                    <section>
+                        <h2>2. auto-generating tool</h2>
+
+                        <h2><a href="https://github.com/w0rm/gulp-svgstore">gulp-svgstore</a></h2>
+
+                        <aside class="notes">
+                            本次重頭戲終於來了！
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h1>End.</h1>
+                        <h2>謝謝</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>gulp-svgstore</h1>
+                    </section>
+
+                    <section>
+                        <h2>0. prepare</h2>
+
+                        <p>
+                            <img style="width: 50vmin; min-width: 30vw" src="img/svgstore-0-prepare.png" alt="prepare svgs" />
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>1. basic</h2>
+
+                        <aside class="notes">
+                            完整、合格的 svg 圖檔
+                        </aside>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                            ```
+                            gulp.task('svgicons', ['clean:svg'], function() {
+                              gulp.src(path.svg.src + '*.svg')
+                                .pipe(svgstore())
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+                            ```
+                            </script>
+                        </div>
+
+                        <img src="img/svgstore-1-basic.png" alt="" />
+                    </section>
+
+                    <section>
+                        <h2>2. inlineSVG</h2>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                            ```
+                            gulp.task('svgicons', ['clean:svg'], function() {
+                              gulp.src(path.svg.src + '**/*.svg')
+                                .pipe(svgstore({inlineSvg: true}))
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+                            ```
+                            </script>
+                        </div>
+
+                        <img src="img/svgstore-2-inlinesvg.png" alt="" />
+                    </section>
+
+                    <section>
+                        <h2>3. basic prefix id</h2>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                            ```
+                            gulp.task('svgicons', ['clean:svg'], function() {
+                              gulp.src(path.svg.src + '**/*.svg')
+                                .pipe(rename({prefix: 'icon-'}))
+                                .pipe(svgstore({inlineSvg: true}))
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+                            ```
+                            </script>
+                        </div>
+
+                        <img src="img/svgstore-3-basic-id.png" alt="" />
+
+                        <aside class="notes">
+                            為了要在 markup 上區別使用
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>4. auto prefix id</h2>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                            ```
+                            gulp.task('svgicons', ['clean:svg'], function() {
+                              gulp.src(path.svg.src + '**/*.svg', { base: path.svg.src})
+                                .pipe(rename(function (path) {
+                                  var name = path.dirname.split(path.sep);
+                                  name.push(path.basename);
+                                  path.basename = name.join('-');
+                                }))
+                                .pipe(svgstore({inlineSvg: true}))
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+                            ```
+                            </script>
+                        </div>
+
+                        <img src="img/svgstore-4-auto-id.png" alt="" />
+
+                        <aside class="notes">
+                            讓 prefix 依據資料夾名稱來決定
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>5. svg optimization</h2>
+                        <h4>with <a href="https://github.com/sindresorhus/gulp-imagemin">gulp-imagemin</a></h4>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                            ```
+                            gulp.task('svgicons', ['clean:svg'], function() {
+                              gulp.src(path.svg.src + '**/*.svg', { base: path.svg.src})
+                                .pipe(rename(function (path) {
+                                  var name = path.dirname.split(path.sep);
+                                  name.push(path.basename);
+                                  path.basename = name.join('-');
+                                }))
+                                .pipe(imagemin())
+                                .pipe(svgstore({inlineSvg: true}))
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+                            ```
+                            </script>
+                        </div>
+
+                        <img src="img/svgstore-5-minify.png" alt="" />
+
+                        <aside class="notes">
+                            原本有個 svgo 專門在處理，不過後來全都合進 imagemin 裡了
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>6. add svg fallback, if necessary.</h3>
+                        <h4>with <a href="https://github.com/w0rm/gulp-svgfallback">gulp-svgfallback</a></h4>
+
+                        <div data-markdown>
+                            <script type="text/template">
+                            ```
+                            var minifySVGs = (function() {
+                              return gulp.src(path.svg.src + '**/*.svg', { base: path.svg.src})
+                                .pipe(rename(function (path) {
+                                  var name = path.dirname.split(path.sep);
+                                  name.push(path.basename);
+                                  path.basename = name.join('-');
+                                }))
+                                .pipe(imagemin());
+                            })();
+
+                            gulp.task('svgicons', ['svgfallback'], function() {
+                              // svgstore
+                              minifySVGs
+                                .pipe(svgstore({inlineSvg: true}))
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+
+                            gulp.task('svgfallback', ['clean:svg'], function() {
+                              // svgfallback
+                              minifySVGs
+                                .pipe(svgfallback())
+                                .pipe(gulp.dest(path.svg.dest));
+                            });
+                            ```
+                            </script>
+                        </div>
+
+                    </section>
+
+                    <section>
+                        <h3>6. add svg fallback, if necessary.</h3>
+                        <h4>with <a href="https://github.com/w0rm/gulp-svgfallback">gulp-svgfallback</a></h4>
+                        <img src="img/svgstore-6-fallback.png" alt="" />
+
+                        <aside class="notes">
+                            這邊 css 寫法不是很好
+                            不過大家也不用太講究了
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        # Ref
+
+                        * [Icon System with SVG Sprites](https://css-tricks.com/svg-sprites-use-better-icon-fonts/)
+                        * [Inline SVG vs Icon Fonts [CAGEMATCH]](https://css-tricks.com/icon-fonts-vs-svg/)
+                        * [SVG `<symbol>` a Good Choice for Icons](https://css-tricks.com/svg-symbol-good-choice-icons/)
+                        * [SVG `<use>` with External Source](https://css-tricks.com/svg-use-external-source/)
+                        * [svg4everybody](https://github.com/jonathantneal/svg4everybody)
+                        * [Using ARIA to enhance SVG accessibility](http://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/)
+                        * gulp plugins:
+                            * [gulp-svgstore](https://github.com/w0rm/gulp-svgstore)
+                            * [gulp-svgfallback](https://github.com/w0rm/gulp-svgfallback)
+                            * [gulp-svg-sprite](https://github.com/jkphl/gulp-svg-sprite)
+                    </script>
+                </section>
+
+                <section>
+                    <h1>Q &amp; A</h1>
+
+                    <div style="resize: both; overflow: auto; width: 450px; margin: auto;">
+                        <img src="http://cdn.rawgit.com/Rplus/R-logo/v7/R+.svg" style="background-color: #fff; width: 100%;">
+                    </div>
+
+                    <p>Thanks for attention</p>
+                </section>
+
+                <section>
+                    <h3 style="text-align: left"><code>i/</code> Accessibility <a href="/dist/index.html" target="_blank">[1]</a></h3>
+
+                    <div data-markdown>
+                        <script type="text/template">
+                        ```
+                        <!-- 1 -->
+                        <symbol id="twitter">
+                            <title>twitter</title>
+                            <path etc.../>
+                        </symbol>
+
+                        <!-- 2 -->
+                        <svg title="twitter">
+                            <use xlink:href="map.svg#twitter"/>
+                        </svg>
+
+                        <!-- 3 -->
+                        <svg role="presentation">
+                            <use xlink:href="map.svg#twitter"/>
+                        </svg>
+
+                        <!-- 4 -->
+                        <svg title="Find me on Twitter" role="img">
+                            <use xlink:href="map.svg#twitter"/>
+                        </svg>
+
+                        <!-- 5 -->
+                        <svg title="send a mail" aria-labelledby="gmail-icon-title  gmail-icon-desc">
+                            <title id="gmail-icon-title">a icon of google mail</title>
+                            <desc id="gmail-icon-desc">send a mail to my Google mail</desc>
+                            <use xlink:href="map.svg#gmail"/>
+                        </svg>
+                        ```
+                        </script>
+                    </div>
+
+                    <aside class="notes">
+                        這邊討論的是 svg icon 的 accessibility，若 icon 僅裝飾，可直接無視
+
+                        <code>role="presentation"</code> 沒啥用<br/>
+                        <code>role="img" + title</code> 比較有用
+                    </aside>
+                </section>
+
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                center: false,
+
+                transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+        <style>
+            cite {
+                font-size: .6em !important;
+                font-family: consolas, monospace !important;
+                text-shadow: 2px 2px #000;
+                opacity: .5;
+            }
+
+            .reveal pre code {
+                font-size: 1.2em;
+                line-height: 1.3;
+            }
+        </style>
+    </body>
+</html>
