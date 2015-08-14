@@ -12,6 +12,7 @@ var svgfallback = require('gulp-svgfallback');
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var del = require('del');
+var ghPages = require('gulp-gh-pages');
 
 var path = {
   html: {
@@ -135,4 +136,9 @@ gulp.task('slide-dev', ['slide-view'], function() {
   gulp.watch(slideFolder + slideFileName).on('change', function() {
     runSequence('slide-clone', browserSync.reload);
   });
+});
+
+gulp.task('deploy', ['slide-clone'], function() {
+  return gulp.src(revealFolder + '**/*')
+    .pipe(ghPages());
 });
