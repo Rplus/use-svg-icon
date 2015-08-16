@@ -103,11 +103,6 @@ var slideFolder = './slide/';
 var slideFileName = 'index.html';
 
 gulp.task('slide-clone', function() {
-  // force delete old slide file
-  del([revealFolder + slideFileName], function (err, paths) {
-      console.log('Deleted files/folders:\n', paths.join('\n'));
-  });
-
   // clone slide's files
   gulp.src(slideFolder + '**/*.*')
     .pipe(gulp.dest(revealFolder));
