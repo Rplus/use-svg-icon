@@ -139,6 +139,10 @@ gulp.task('slide-dev', ['slide-view'], function() {
 });
 
 gulp.task('deploy', ['slide-clone'], function() {
-  return gulp.src(revealFolder + '**/*')
+  return gulp.src([
+      revealFolder + '**/*',
+      '!' + revealFolder + 'node_modules{,/**}',
+      '!' + revealFolder + 'test{,/**}'
+    ])
     .pipe(ghPages());
 });
