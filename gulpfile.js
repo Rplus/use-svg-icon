@@ -100,7 +100,7 @@ gulp.task('default', ['clean'], function(cb) {
 // slide task
 var revealFolder = 'node_modules/reveal.js/';
 var slideFolder = './slide/';
-var slideFileName = 'slide.html';
+var slideFileName = 'index.html';
 
 gulp.task('slide-clone', function() {
   // force delete old slide file
