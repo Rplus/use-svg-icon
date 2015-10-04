@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var imagemin = require('gulp-imagemin');
-var svgo = require('gulp-svgo');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 var data = require('gulp-data');
