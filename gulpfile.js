@@ -12,6 +12,7 @@ var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var del = require('del');
 var ghPages = require('gulp-gh-pages');
+var $path = require('path');
 
 var path = {
   html: {
@@ -47,7 +48,7 @@ gulp.task('jade2html', function() {
 var minifySVGs = (function() {
   return gulp.src(path.svg.src + '**/*.svg', { base: path.svg.src})
     .pipe(rename(function (path) {
-      var name = path.dirname.split(path.sep);
+      var name = path.dirname.split($path.sep);
       name.push(path.basename);
       path.basename = name.join('-');
     }))
